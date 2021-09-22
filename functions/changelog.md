@@ -147,3 +147,14 @@ http://localhost:5001/fossnsbm-e4ff9/us-central1/events/update/test
 ```
 http://localhost:5001/fossnsbm-e4ff9/us-central1/events/remove/name
 ```
+
+
+avalible roles
+
+```js
+
+isAuthorized({ hasRole: ['admin', 'manager'], allowSameUser: true }),
+
+```
+
+and typical user is just user we can add more roles.
