@@ -1,5 +1,5 @@
 import { Application } from "express";
-import { allevents , removeEvent , createEvent} from "./controller";
+import { allevents , removeEvent , createEvent , updateEvent} from "./controller";
 //import { isAuthenticated } from "../auth/authenticated";
 //import { isAuthorized } from "../auth/authorized";
 
@@ -18,6 +18,10 @@ export function eventsConfig(app: Application) {
 
     app.post('/create',[
         createEvent
+    ]);
+
+    app.post('/update/:id',[
+        updateEvent
     ]);
 }
 

@@ -60,15 +60,48 @@ export async function createEvent(req: Request , res: Response) {
             date:date,
             isPublic:isPublic,
         });
-        
-        return res.status(200).send({message:"Event Added "})
+
+        return res.status(204).send({message:"Event Added "})
     }
     catch (err){
         return res.status(500).send({message: err})
     }
 }
 
+export async function updateEvent(req: Request , res: Response) {
+    const { id } = req.params
+    const { name, topic, talker, date, isPublic } = req.body
 
+    try{
+        if(!name || !topic || !talker || !date || !isPublic){
+            return res.status(400).send({message:"Missing fields"})
+        }
+    
+        const db: Firestore = admin.firestore();
+        let docRef=db.collection('Events').doc(id)
+    
+        await docRef.update({
+            name: name,
+            topic: topic,
+            talker:talker ,
+            date:date,
+            isPublic:isPublic,
+        });
+
+        console.log({
+            name: name,
+            topic: topic,
+            talker:talker ,
+            date:date,
+            isPublic:isPublic,
+        });
+    
+        return res.status(201).send({name})
+    }
+    catch (err){
+        return res.status(500).send({message: "something went wrong"})
+    }
+}
 
 
 function handleError(res: Response, err: any) {
