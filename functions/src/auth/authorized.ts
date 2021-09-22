@@ -9,7 +9,7 @@ export function isAuthorized(opts: { hasRole: Array<'admin' | 'manager' | 'user'
 
 
        if(email === 'dasith@dasith.local'){
-           return next();
+           return next(); // just added my mail to check stuff remove in prod
        }
        if (opts.allowSameUser && id && uid === id)
            return next();

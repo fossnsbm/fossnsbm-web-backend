@@ -63,8 +63,8 @@ export async function createEvent(req: Request , res: Response) {
 
         return res.status(204).send({message:"Event Added "})
     }
-    catch (err){
-        return res.status(500).send({message: err})
+    catch (err) {
+        return handleError(res, err)
     }
 }
 
@@ -98,8 +98,8 @@ export async function updateEvent(req: Request , res: Response) {
     
         return res.status(201).send({name})
     }
-    catch (err){
-        return res.status(500).send({message: "something went wrong"})
+    catch (err) {
+        return handleError(res, err)
     }
 }
 

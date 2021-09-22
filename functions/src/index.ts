@@ -7,6 +7,7 @@ import { routesConfig } from './users/routes-config';
 import { eventsConfig } from './eventz/event-routes';
 
 var serviceAccount = require("/home/dasith/projects/idk/fossnsbm-web-backend/functions/src/serviceAccountKey.json");
+// prob change the path im too lazy 
 
 
 admin.initializeApp({
