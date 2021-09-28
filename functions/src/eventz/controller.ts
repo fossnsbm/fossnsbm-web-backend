@@ -37,9 +37,9 @@ export async function removeEvent(req: Request, res: Response) {
 export async function createEvent(req: Request , res: Response) {
     const { name, topic, talker, date, isPublic } = req.body
 
-    if(!name || !topic || !talker || !date || !isPublic){
-        return res.status(400).send({message:"Missing fields"})
-    }
+    //if(!name || !topic || !talker || !date || !isPublic){
+     //   return res.status(400).send({message:"Missing fields"})
+    //}
 
     try{
         const db: Firestore = admin.firestore();
