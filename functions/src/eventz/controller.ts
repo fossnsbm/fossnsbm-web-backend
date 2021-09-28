@@ -37,34 +37,26 @@ export async function removeEvent(req: Request, res: Response) {
 export async function createEvent(req: Request , res: Response) {
     const { name, topic, talker, date, isPublic } = req.body
 
-    //if(!name || !topic || !talker || !date || !isPublic){
-     //   return res.status(400).send({message:"Missing fields"})
-    //}
-
-    try{
-        const db: Firestore = admin.firestore();
-        let docRef=db.collection('Events').doc(name)
-    
-        await docRef.set({
-            name: name,
-            topic: topic,
-            talker:talker ,
-            date:date,
-            isPublic:isPublic,
-        });
-
-        console.log({
-            name: name,
-            topic: topic,
-            talker:talker ,
-            date:date,
-            isPublic:isPublic,
-        });
-
-        return res.status(204).send({message:"Event Added "})
+    if(!name || !topic || !talker || !date ){
+       return res.status(400).send({message:"Soemthing went wrong"})
     }
-    catch (err) {
-        return handleError(res, err)
+    else{
+        try{
+            const db: Firestore = admin.firestore();
+            let docRef=db.collection('Events').doc(name)
+        
+            await docRef.set({
+                name: name,
+                topic: topic,
+                talker:talker ,
+                date:date,
+                isPublic:isPublic,
+            });
+            return res.status(200).send({message:"done"})
+        }
+        catch (err) {
+            return handleError(res, err)
+        }
     }
 }
 
